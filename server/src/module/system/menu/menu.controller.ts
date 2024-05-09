@@ -47,7 +47,7 @@ export class MenuController {
     summary: '菜单管理-详情',
   })
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: string | number) {
     return this.menuService.findOne(+id);
   }
 
@@ -60,6 +60,10 @@ export class MenuController {
   })
   @Put()
   update(@Body() updateMenuDto: UpdateMenuDto) {
+    updateMenuDto = {
+      ...updateMenuDto,
+      menuId: +updateMenuDto.menuId,
+    };
     return this.menuService.update(updateMenuDto);
   }
 
