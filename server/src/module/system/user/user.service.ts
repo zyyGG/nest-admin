@@ -326,7 +326,7 @@ export class UserService {
       deptId: userData.deptId,
     };
     await this.redisService.storeSet(`${CacheEnum.LOGIN_TOKEN_KEY}${uuid}`, cacheData, LOGIN_TOKEN_EXPIRESIN);
-    return ResultData.ok(
+    return ResultData.done(
       {
         token,
       },
