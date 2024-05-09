@@ -29,4 +29,12 @@ export class ResultData {
   static fail(code: number, msg?: string, data?: any): ResultData {
     return new ResultData(code || 500, msg || 'fail', data);
   }
+
+  static done(data?: any, msg?: string): any {
+    return {
+      code: SUCCESS_CODE,
+      msg: msg || 'ok',
+      ...data,
+    };
+  }
 }
